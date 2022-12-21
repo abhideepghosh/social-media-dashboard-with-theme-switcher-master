@@ -357,12 +357,3 @@ p {
   justify-self: end;
   align-self: center;
 }
-/* .light-mode{
-  background-color: hsl(0, 0%, 100%);
-  color: black;
-}
-.dark-mode{
-  background-color: hsl(232, 19%, 15%);
-  color: hsl(0, 0%, 100%);
-
-} */
