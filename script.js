@@ -82,12 +82,12 @@ const markup = (data) => {
 };
 
 const mainGrid = document.querySelector("#mainGrid");
-let elements = followerData.map((data) => markup(data)).join("");
+const elements = followerData.map((data) => markup(data)).join("");
 mainGrid.innerHTML = elements;
 
 /*---------------- Overview Data ----------------*/
 
-const OverviewData = [
+const overviewData = [
   {
     id: 1,
     icon: "icon-facebook.svg",
@@ -135,15 +135,44 @@ const OverviewData = [
     icon: "icon-youtube.svg",
     userNo: 107,
     title: "Likes",
-    growth: 19,
+    growth: -19,
   },
   {
     id: 8,
     icon: "icon-youtube.svg",
     userNo: 1407,
     title: "Total Views",
-    growth: 12,
+    growth: -12,
   },
 ];
 
 /*---------------- Overview Cards ----------------*/
+
+const overview = (data) => {
+  return `
+    <div class="overview-card">
+  <p class="overview-card-label">${data.title}</p>
+  <p class="overview-card-num">${data.userNo}</p>
+  <img src="/images/${data.icon}" class="social-icon overview-icon"/>
+  <p class="overview-percent ${data.growth > 0 ? "green" : "red"}">${
+    data.growth
+  }%</p>
+</div>
+`;
+};
+
+const bottomGrid = document.getElementById("bottomGrid");
+const overviewGrid = overviewData.map((data) => overview(data)).join("");
+bottomGrid.innerHTML = overviewGrid;
+/**
+ * Map --> Returning A NEW Array
+ * Each Element --> parameter
+ * function --> process
+ * return --> *
+ * returned Value --> treated As an object/ variable push to the array
+ */
+
+/**
+ * join --> take any array -> and merge it and return a string
+ * [1, 2, 3, 4, 5].join('') -> 1 2 3 4 5
+ */
